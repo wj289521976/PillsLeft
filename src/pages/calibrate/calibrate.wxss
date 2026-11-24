@@ -1,0 +1,59 @@
+.calibrate-header {
+  margin-bottom: 16px;
+}
+.calibrate-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 8px;
+}
+.calibrate-desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.q-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2F5496;
+  margin-bottom: 14px;
+}
+.actual-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 6px 0 14px;
+}
+.actual-unit {
+  font-size: 16px;
+  color: #333;
+}
+
+.compare-box {
+  margin-bottom: 16px;
+}
+.compare-label {
+  font-size: 14px;
+  color: #999;
+  display: block;
+  margin-bottom: 4px;
+}
+.compare-value {
+  font-size: 20px;
+  font-weight: 700;
+  display: block;
+}
+.compare-value.predicted {
+  color: #2F5496;
+}
+
+.deviation-box {
+  background: #F0F5FF;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  text-align: center;
+  color: #333;
+}

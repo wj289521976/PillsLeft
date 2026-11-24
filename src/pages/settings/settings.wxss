@@ -1,0 +1,44 @@
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #F0F0F0;
+}
+.info-row:last-child {
+  border-bottom: none;
+}
+.info-label {
+  font-size: 14px;
+  color: #333;
+}
+.info-value {
+  font-size: 14px;
+  color: #999;
+}
+/* 可点击行右侧值：主色暗示可操作（备份恢复/默认数据），危险色由行内 style 指定 */
+.info-action {
+  color: #2F5496;
+}
+
+.card-title {
+  font-size: 12px;
+  color: #999;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #F0F0F0;
+}
+.card-hint {
+  font-size: 11px;
+  color: #BBB;
+  line-height: 1.6;
+  padding-top: 8px;
+}
+
+.footer-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  font-size: 12px;
+  color: #BBB;
+}

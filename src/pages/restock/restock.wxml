@@ -1,0 +1,29 @@
+<view wx:if="{{medicine}}" class="container">
+  <view class="restock-header">
+    <text class="restock-title">为「{{medicine.name}}」补货</text>
+  </view>
+
+  <view class="card">
+    <view class="q-title">又买了几盒？</view>
+    <view class="boxes-row">
+      <stepper value="{{boxes}}" min="1" max="99" step="1" bind:change="onBoxes" />
+      <text class="boxes-unit">盒（每盒 {{medicine.specPerBox}} 粒）</text>
+    </view>
+
+    <view class="result-box">
+      <text class="result-label">系统推算现在剩</text>
+      <text class="result-value">{{predictedBefore}} 粒</text>
+      <view class="result-hint">和实际不一样？先去「校准」再补货</view>
+    </view>
+
+    <view class="result-box after">
+      <text class="result-label">补货后共有</text>
+      <text class="result-value">{{afterStock}} 粒</text>
+    </view>
+  </view>
+
+  <view class="action-bar">
+    <button class="btn-outline" bindtap="onCancel">取消</button>
+    <button class="btn-primary" bindtap="onConfirm" style="flex:1">确认补货</button>
+  </view>
+</view>

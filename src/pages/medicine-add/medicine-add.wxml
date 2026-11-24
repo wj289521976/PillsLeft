@@ -1,0 +1,102 @@
+<view class="container">
+  <!-- 第一问：药名（可用微信键盘语音输入） -->
+  <view class="card">
+    <view class="q-title">① 药叫什么名字？</view>
+    <input
+      class="name-input"
+      placeholder="点这里打字，或按住键盘话筒说药名"
+      maxlength="30"
+      value="{{name}}"
+      bindinput="onNameInput"
+    />
+  </view>
+
+  <!-- 第二问：什么时候吃、每次几粒 -->
+  <view class="card">
+    <view class="q-title">② 什么时候吃、每次几粒？</view>
+
+    <block wx:if="{{!noFixedTime}}">
+      <view class="slot-grid">
+        <view
+          wx:for="{{slots}}"
+          wx:key="slot"
+          class="slot-toggle {{item.on ? 'slot-on' : ''}}"
+          data-index="{{index}}"
+          bindtap="onToggleSlot"
+        >{{item.label}}</view>
+      </view>
+
+      <block wx:for="{{slots}}" wx:key="slot">
+        <view wx:if="{{item.on}}" class="slot-dose-row">
+          <text class="slot-dose-label">{{item.label}}上吃</text>
+          <stepper
+            value="{{item.dose}}"
+            min="0.5"
+            max="20"
+            step="0.5"
+            data-index="{{index}}"
+            bind:change="onSlotDose"
+          />
+        </view>
+      </block>
+
+      <view wx:if="{{dailyDose > 0}}" class="dose-sum">
+        每天共 <text class="num-big">{{dailyDose}}</text> 粒
+      </view>
+    </block>
+
+    <block wx:else>
+      <input
+        class="name-input occasional-input"
+        placeholder="怎么吃？如：疼了才吃一粒"
+        maxlength="30"
+        value="{{occasionalText}}"
+        bindinput="onOccasionalText"
+      />
+      <view class="slot-dose-row">
+        <text class="slot-dose-label">大约每天几粒</text>
+        <stepper value="{{occasionalDose}}" min="0.5" max="20" step="0.5" bind:change="onOccasionalDose" />
+      </view>
+      <view wx:if="{{dailyDose > 0}}" class="dose-sum">
+        每天约 <text class="num-big">{{dailyDose}}</text> 粒
+      </view>
+    </block>
+
+    <view class="no-fixed-toggle" bindtap="onToggleNoFixed">
+      {{noFixedTime ? '← 改为按时段点选' : '没有固定时间？点这里'}}
+    </view>
+  </view>
+
+  <!-- 第三问：买了几盒、每盒几粒 -->
+  <view class="card">
+    <view class="q-title">③ 买了几盒、每盒几粒？</view>
+
+    <view class="slot-dose-row">
+      <text class="slot-dose-label">买了</text>
+      <stepper value="{{boxes}}" min="1" max="99" step="1" bind:change="onBoxes" />
+      <text class="slot-dose-label">盒</text>
+    </view>
+
+    <view class="spec-chips">
+      <view
+        wx:for="{{presetSpecs}}"
+        wx:key="*this"
+        class="spec-chip {{spec == item ? 'spec-on' : ''}}"
+        data-spec="{{item}}"
+        bindtap="onPickSpec"
+      >{{item}}粒/盒</view>
+    </view>
+
+    <view class="slot-dose-row">
+      <text class="slot-dose-label">每盒</text>
+      <stepper value="{{spec}}" min="1" max="9999" step="1" bind:change="onSpec" />
+      <text class="slot-dose-label">粒</text>
+    </view>
+
+    <view class="dose-sum">
+      一共 <text class="num-big">{{totalPills}}</text> 粒（{{today}} 起）
+    </view>
+  </view>
+
+  <button class="btn-primary submit-btn" bindtap="onSubmit">保存</button>
+</view>

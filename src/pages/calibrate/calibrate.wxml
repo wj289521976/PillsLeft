@@ -1,0 +1,30 @@
+<view wx:if="{{medicine}}" class="container">
+  <view class="calibrate-header">
+    <text class="calibrate-title">校准「{{medicine.name}}」库存</text>
+    <text class="calibrate-desc">数一数药盒里现在还剩几粒，点下面的 −/+ 告诉我。</text>
+  </view>
+
+  <view class="card">
+    <view class="q-title">现在还剩几粒？</view>
+
+    <view class="actual-row">
+      <stepper value="{{actualPills}}" min="0" max="9999" step="1" bind:change="onActual" />
+      <text class="actual-unit">粒</text>
+    </view>
+
+    <view class="compare-box">
+      <view class="compare-item">
+        <text class="compare-label">系统推算剩余</text>
+        <text class="compare-value predicted">{{predicted}} 粒</text>
+      </view>
+    </view>
+
+    <view class="deviation-box">
+      <text>偏差：{{deviation >= 0 ? '+' : ''}}{{deviation}} 粒</text>
+      <text wx:if="{{deviation > 0}}" class="status-warning">（系统少算了）</text>
+      <text wx:elif="{{deviation < 0}}" class="status-out">（系统多算了）</text>
+    </view>
+  </view>
+
+  <button class="btn-primary" bindtap="onConfirm" style="margin-top: 24px;">确认校准</button>
+</view>

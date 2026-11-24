@@ -1,0 +1,58 @@
+.restock-header {
+  margin-bottom: 16px;
+}
+.restock-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+}
+
+.q-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2F5496;
+  margin-bottom: 14px;
+}
+.boxes-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 6px 0;
+}
+.boxes-unit {
+  font-size: 14px;
+  color: #666;
+}
+
+.result-box {
+  background: #F0F5FF;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  margin-top: 14px;
+}
+.result-label {
+  font-size: 13px;
+  color: #666;
+}
+.result-value {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2F5496;
+  margin-top: 4px;
+}
+.result-hint {
+  font-size: 12px;
+  color: #999;
+  margin-top: 6px;
+}
+
+.action-bar {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+.action-bar button {
+  margin: 0;
+}

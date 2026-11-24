@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "手动校准",
+  "usingComponents": {
+    "stepper": "/components/stepper/stepper"
+  }
+}

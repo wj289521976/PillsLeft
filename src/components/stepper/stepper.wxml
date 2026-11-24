@@ -1,0 +1,5 @@
+<view class="stepper">
+  <view class="step-btn {{value <= min ? 'step-disabled' : ''}}" catchtap="onMinus">−</view>
+  <input class="step-num" type="digit" value="{{display}}" bindinput="onInput" bindblur="onBlur" />
+  <view class="step-btn {{value >= max ? 'step-disabled' : ''}}" catchtap="onPlus">+</view>
+</view>

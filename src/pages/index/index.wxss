@@ -1,0 +1,58 @@
+.summary-bar {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.summary-date {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2F5496;
+}
+.summary-stats {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #666;
+}
+
+.medicine-card {
+  position: relative;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.card-name {
+  font-size: 16px;
+  font-weight: 600;
+}
+.status-badge {
+  font-size: 12px;
+  font-weight: 500;
+}
+.card-body {
+  margin-bottom: 10px;
+}
+.card-info {
+  font-size: 14px;
+  color: #555;
+  display: block;
+}
+.card-usage {
+  font-size: 12px;
+  color: #999;
+  margin-top: 4px;
+  display: block;
+}
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.card-actions button {
+  margin: 0;
+  font-size: 12px;
+}

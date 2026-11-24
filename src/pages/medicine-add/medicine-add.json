@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "新增药品",
+  "usingComponents": {
+    "stepper": "/components/stepper/stepper"
+  }
+}

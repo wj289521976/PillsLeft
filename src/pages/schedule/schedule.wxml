@@ -1,0 +1,66 @@
+<view class="container">
+  <view class="summary-bar">
+    <view class="summary-left">
+      <text class="summary-date">{{today}} · 今日用药</text>
+      <view class="summary-stats">
+        <text>在服 {{totalCount}} 种</text>
+        <text wx:if="{{warningCount > 0}}" class="status-warning"> 🟡{{warningCount}}预警</text>
+        <text wx:if="{{outCount > 0}}" class="status-out"> ❌{{outCount}}断药</text>
+      </view>
+    </view>
+    <button class="btn-outline btn-box" size="mini" bindtap="onOpenBox">💊 药箱</button>
+  </view>
+
+  <view wx:if="{{reminderText}}" class="reminder-bar">🔔 {{reminderText}}</view>
+
+  <view wx:if="{{isEmpty}}" class="empty-state">
+    <view class="empty-icon">💊</view>
+    <view class="empty-text">药箱空空，先添加第一种药品吧</view>
+    <button class="btn-primary empty-add-btn" bindtap="onGoAdd">➕ 添加第一种药</button>
+    <view class="empty-hint">已有数据可从「设置 → 从备份恢复」找回</view>
+  </view>
+
+  <view wx:else>
+    <view
+      wx:for="{{groups}}"
+      wx:key="slot"
+      class="card slot-card {{item.current ? 'slot-current' : ''}}"
+    >
+      <view class="slot-header">
+        <text class="slot-time">{{item.time}}</text>
+        <text class="slot-label">{{item.label}}</text>
+        <text wx:if="{{item.current}}" class="slot-now">现在</text>
+      </view>
+      <view wx:if="{{item.items.length === 0}}" class="slot-empty">本时段无药</view>
+      <view
+        wx:for="{{item.items}}"
+        wx:for-item="med"
+        wx:key="id"
+        class="slot-item"
+        bindtap="onDetail"
+        data-id="{{med.id}}"
+      >
+        <text class="med-name {{med.status === 'out' ? 'med-out' : ''}}">{{med.icon}}{{med.icon ? ' ' : ''}}{{med.name}}</text>
+        <text class="med-dose {{med.status === 'out' ? 'med-out' : ''}}">{{med.doseText}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{unscheduled.length > 0}}" class="card slot-card">
+      <view class="slot-header">
+        <text class="slot-label">未排程</text>
+        <text class="slot-hint">未能识别时段，按原文展示</text>
+      </view>
+      <view
+        wx:for="{{unscheduled}}"
+        wx:for-item="med"
+        wx:key="id"
+        class="slot-item"
+        bindtap="onDetail"
+        data-id="{{med.id}}"
+      >
+        <text class="med-name {{med.status === 'out' ? 'med-out' : ''}}">{{med.icon}}{{med.icon ? ' ' : ''}}{{med.name}}</text>
+        <text class="med-dose {{med.status === 'out' ? 'med-out' : ''}}">{{med.usageTime}}</text>
+      </view>
+    </view>
+  </view>
+</view>

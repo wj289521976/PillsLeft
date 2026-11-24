@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "补货",
+  "usingComponents": {
+    "stepper": "/components/stepper/stepper"
+  }
+}

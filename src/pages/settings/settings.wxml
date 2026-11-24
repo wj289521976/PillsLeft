@@ -1,0 +1,79 @@
+<view class="container">
+  <view class="card">
+    <view class="info-row">
+      <text class="info-label">药品总数</text>
+      <text class="info-value">{{medicineCount}} 种</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">版本</text>
+      <text class="info-value">{{version}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">用药时段与提醒</view>
+    <picker mode="time" value="{{slotTimes.morning}}" data-slot="morning" bindchange="onSlotTimeChange">
+      <view class="info-row">
+        <text class="info-label">早上用药时刻</text>
+        <text class="info-value info-action">{{slotTimes.morning}} ›</text>
+      </view>
+    </picker>
+    <picker mode="time" value="{{slotTimes.noon}}" data-slot="noon" bindchange="onSlotTimeChange">
+      <view class="info-row">
+        <text class="info-label">中午用药时刻</text>
+        <text class="info-value info-action">{{slotTimes.noon}} ›</text>
+      </view>
+    </picker>
+    <picker mode="time" value="{{slotTimes.evening}}" data-slot="evening" bindchange="onSlotTimeChange">
+      <view class="info-row">
+        <text class="info-label">晚上用药时刻</text>
+        <text class="info-value info-action">{{slotTimes.evening}} ›</text>
+      </view>
+    </picker>
+    <picker mode="time" value="{{slotTimes.bedtime}}" data-slot="bedtime" bindchange="onSlotTimeChange">
+      <view class="info-row">
+        <text class="info-label">睡前用药时刻</text>
+        <text class="info-value info-action">{{slotTimes.bedtime}} ›</text>
+      </view>
+    </picker>
+    <view class="info-row">
+      <text class="info-label">待服提示条</text>
+      <switch checked="{{reminderOn}}" color="#2F5496" bindchange="onReminderToggle" />
+    </view>
+    <view class="card-hint">时刻用于「用药」页分组排序与当前时段高亮；提示条在用药页顶部提醒"现在该吃……"</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">提醒方式说明</view>
+    <view class="card-hint" style="padding-top:0;">提醒为应用内提醒：打开小程序即见今日用药与待服提示，不发送微信消息。微信推送提醒需要平台资质，列入后续版本规划（ADR-0003）。</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">备份与恢复</view>
+    <view class="info-row" bindtap="onBackupCopy">
+      <text class="info-label">复制备份</text>
+      <text class="info-value info-action">JSON 到剪贴板 ›</text>
+    </view>
+    <view class="info-row" bindtap="onBackupShare">
+      <text class="info-label">分享备份文件</text>
+      <text class="info-value info-action">发送 .json ›</text>
+    </view>
+    <view class="info-row" bindtap="onBackupImport">
+      <text class="info-label">从备份恢复</text>
+      <text class="info-value info-action" style="color:#2F5496">聊天文件 / 剪贴板 ›</text>
+    </view>
+    <view class="card-hint">备份含全部药品与设置；恢复会覆盖当前数据（需二次确认），建议换机或清缓存前先备份</view>
+  </view>
+
+  <view class="card">
+    <view class="info-row" bindtap="onClearData">
+      <text class="info-label">清空全部数据</text>
+      <text class="info-value info-action" style="color:#FF4D4F">清空 ›</text>
+    </view>
+  </view>
+
+  <view class="footer-note">
+    <text>清点助手 · 用数学替代打卡</text>
+    <text style="margin-top:4px;font-size:11px;">消耗是时间的函数，不是用户操作的函数</text>
+  </view>
+</view>

@@ -1,0 +1,66 @@
+.detail-card {
+  padding: 20px;
+}
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.detail-name {
+  font-size: 18px;
+  font-weight: 700;
+}
+.detail-status {
+  font-size: 14px;
+  font-weight: 500;
+}
+.detail-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+.detail-item {
+  width: 25%;
+  text-align: center;
+}
+.detail-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2F5496;
+}
+.detail-label {
+  font-size: 12px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #333;
+}
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #F0F0F0;
+}
+.info-label {
+  color: #999;
+  font-size: 13px;
+}
+.info-value {
+  color: #333;
+  font-size: 13px;
+}
+
+.action-bar {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+.action-bar button {
+  flex: 1;
+  margin: 0;
+}

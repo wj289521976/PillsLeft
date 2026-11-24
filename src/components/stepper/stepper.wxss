@@ -1,0 +1,30 @@
+/* 步进器（适老）：44px 按钮、22px 数字（R11 关键数字 20px+） */
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+.step-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #2F5496;
+  color: #FFFFFF;
+  font-size: 26px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-disabled {
+  background: #C6CFE0;
+}
+.step-num {
+  width: 72px;
+  height: 44px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #2F5496;
+  border-bottom: 3px solid #2F5496;
+}

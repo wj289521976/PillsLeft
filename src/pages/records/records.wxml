@@ -1,0 +1,124 @@
+<view class="container">
+  <!-- 段①：消耗流水（v1 保留） -->
+  <view class="range-tabs">
+    <view
+      class="range-tab {{rangeDays === 7 ? 'active' : ''}}"
+      data-days="7"
+      bindtap="selectRange"
+    >7天</view>
+    <view
+      class="range-tab {{rangeDays === 30 ? 'active' : ''}}"
+      data-days="30"
+      bindtap="selectRange"
+    >30天</view>
+  </view>
+
+  <view class="summary-text">{{rangeLabel}}消耗流水 · 按药合并</view>
+  <view class="summary-sub">点药名看逐日明细；「今日」行为全天预计量</view>
+
+  <view wx:if="{{byMedicine.length === 0}}" class="empty-state">
+    <view class="empty-text">暂无出库记录</view>
+  </view>
+
+  <view wx:else>
+    <view
+      wx:for="{{byMedicine}}"
+      wx:key="name"
+      class="card med-group-card"
+      data-name="{{item.name}}"
+      bindtap="onToggleMedGroup"
+    >
+      <view class="med-group-head">
+        <text class="med-group-name">{{expandedMed === item.name ? '▾' : '▸'}} {{item.name}}</text>
+        <view class="med-group-sum">
+          <text class="med-group-days">{{item.days.length}} 天</text>
+          <text class="med-group-total">{{item.totalConsumed}} 粒</text>
+        </view>
+      </view>
+      <view wx:if="{{expandedMed === item.name}}" class="med-group-body">
+        <view
+          wx:for="{{item.days}}"
+          wx:for-item="day"
+          wx:key="date"
+          class="med-day-row"
+        >
+          <text class="med-day-date">{{day.date}}<text wx:if="{{day.isToday}}" class="med-day-today">今日·预计</text></text>
+          <text class="med-day-qty">{{day.consumed}} 粒</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 段②：用药记录（后台自动沉淀，R10） -->
+  <view class="med-section-head">
+    <text class="med-section-title">用药记录</text>
+    <text class="med-section-hint">自动记录，无需打卡</text>
+  </view>
+
+  <view class="export-bar">
+    <button class="btn-outline export-btn" size="mini" bindtap="onCopy">📋 复制文本</button>
+    <button class="btn-outline export-btn" size="mini" bindtap="onShareCsv">📤 分享CSV</button>
+  </view>
+
+  <!-- 自选导出时间面板（选「自选时间段」后出现） -->
+  <view wx:if="{{showCustomPanel}}" class="card custom-export-panel">
+    <view class="card-title">自选导出时间段</view>
+    <view class="custom-range-row">
+      <picker mode="date" value="{{customFrom}}" end="{{today}}" bindchange="onCustomFrom">
+        <view class="custom-date-box">
+          <text class="custom-date-label">开始</text>
+          <text class="custom-date-value">{{customFrom}}</text>
+        </view>
+      </picker>
+      <text class="custom-range-sep">至</text>
+      <picker mode="date" value="{{customTo}}" end="{{today}}" bindchange="onCustomTo">
+        <view class="custom-date-box">
+          <text class="custom-date-label">结束</text>
+          <text class="custom-date-value">{{customTo}}</text>
+        </view>
+      </picker>
+    </view>
+    <view class="custom-export-actions">
+      <button class="btn-outline" size="mini" bindtap="onCancelCustomExport">取消</button>
+      <button class="btn-primary" size="mini" bindtap="onConfirmCustomExport">确认导出</button>
+    </view>
+  </view>
+
+  <view wx:if="{{medRecords.length === 0}}" class="empty-state">
+    <view class="empty-text">暂无用药记录</view>
+  </view>
+
+  <view wx:else>
+    <view class="med-group-label">服用中（{{activeCount}}）</view>
+    <view wx:if="{{activeCount === 0}}" class="med-none">暂无服用中的药品</view>
+    <view
+      wx:for="{{activeRecords}}"
+      wx:key="id"
+      class="card med-card"
+    >
+      <view class="med-main">
+        <text class="med-name">{{item.name}}</text>
+        <text class="med-range">{{item.startDate}} 起 · 至今</text>
+      </view>
+    </view>
+
+    <view class="med-group-label">已停药（{{stoppedCount}}）</view>
+    <view wx:if="{{stoppedCount === 0}}" class="med-none">暂无停药记录</view>
+    <view
+      wx:for="{{stoppedRecords}}"
+      wx:key="id"
+      class="card med-card med-card-stopped"
+    >
+      <view class="med-main">
+        <view class="med-name-wrap">
+          <text class="med-name">{{item.name}}</text>
+          <text class="med-reason">{{item.reason}}</text>
+        </view>
+        <text class="med-range">{{item.startDate}} 起 · {{item.endDate}} 停</text>
+      </view>
+      <view class="med-actions">
+        <button class="btn-outline med-resume-btn" size="mini" bindtap="onResume" data-id="{{item.id}}" data-name="{{item.name}}">重新启用</button>
+      </view>
+    </view>
+  </view>
+</view>

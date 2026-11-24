@@ -1,0 +1,84 @@
+<view wx:if="{{medicine}}" class="container">
+  <view class="card detail-card" style="border-left:4px solid {{derived.statusColor}}">
+    <view class="detail-header">
+      <text class="detail-name">{{medicine.name}}</text>
+      <text class="detail-status" style="color:{{derived.statusColor}}">{{derived.statusIcon}} {{derived.statusText}}</text>
+    </view>
+
+    <view class="detail-grid">
+      <view class="detail-item">
+        <view class="detail-value">{{derived.remainingPills}}</view>
+        <view class="detail-label">剩余(粒)</view>
+      </view>
+      <view class="detail-item">
+        <view class="detail-value">{{derived.remainingBoxes}}</view>
+        <view class="detail-label">库存(盒)</view>
+      </view>
+      <view class="detail-item">
+        <view class="detail-value">{{derived.remainingDays}}</view>
+        <view class="detail-label">预估(天)</view>
+      </view>
+      <view class="detail-item">
+        <view class="detail-value">{{derived.consumed}}</view>
+        <view class="detail-label">已消耗(粒)</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">基本信息</view>
+    <view class="info-row">
+      <text class="info-label">服用时间</text>
+      <text class="info-value">{{medicine.usageTime || '未填写'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">规格</text>
+      <text class="info-value">{{medicine.specPerBox}} 粒/盒</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">每日用量</text>
+      <text class="info-value">{{medicine.dailyDose}} 粒</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">上次补货</text>
+      <text class="info-value">{{medicine.lastRestockDate}}，共 {{medicine.lastRestockStock}} 粒</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">距补货已过</text>
+      <text class="info-value">{{derived.daysSinceRestock}} 天</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">建议补货日</text>
+      <text class="info-value">{{derived.suggestedRestockDate}}</text>
+    </view>
+    <block wx:if="{{medicine.archived}}">
+      <view class="info-row">
+        <text class="info-label">停药日期</text>
+        <text class="info-value">{{medicine.stoppedDate}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">停药原因</text>
+        <text class="info-value">{{medicine.stoppedReason}}</text>
+      </view>
+    </block>
+  </view>
+
+  <!-- 停药冻结期隐藏补货/校准/编辑（改锚点会破坏恢复折算语义），只留恢复与删除 -->
+  <block wx:if="{{!medicine.archived}}">
+    <view class="action-bar">
+      <button class="btn-outline" bindtap="onRestock">补货</button>
+      <button class="btn-outline" bindtap="onCalibrate">校准</button>
+      <button class="btn-outline" bindtap="onEdit">编辑</button>
+    </view>
+    <view class="action-bar" style="margin-top:8px">
+      <button class="btn-outline" style="color:#FA8C16;border-color:#FA8C16" bindtap="onStop">停药</button>
+      <button class="btn-outline" style="color:#FF4D4F;border-color:#FF4D4F" bindtap="onDelete">删除药品</button>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="action-bar">
+      <button class="btn-outline" style="color:#52C41A;border-color:#52C41A" bindtap="onResume">重新启用</button>
+      <button class="btn-outline" style="color:#FF4D4F;border-color:#FF4D4F" bindtap="onDelete">删除药品</button>
+    </view>
+  </block>
+</view>

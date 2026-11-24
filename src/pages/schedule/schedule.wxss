@@ -1,0 +1,119 @@
+/* 今日用药页（沿用 CONVENTIONS：卡片白底 12px 圆角、主色 #2F5496、语义色） */
+.summary-bar {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.summary-date {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2F5496;
+}
+.summary-stats {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #666;
+}
+.btn-box {
+  flex-shrink: 0;
+}
+
+/* 待服提示条（R09）：主色底、白字，轻量不遮挡 */
+.reminder-bar {
+  background: #2F5496;
+  color: #FFFFFF;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(47, 84, 150, 0.25);
+}
+
+/* 时段卡片；当前时段主色描边高亮（R08） */
+.slot-card {
+  border: 2px solid transparent;
+}
+.slot-current {
+  border-color: #2F5496;
+  background: #F0F5FF;
+}
+.slot-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.slot-time {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2F5496;
+}
+.slot-current .slot-time {
+  font-size: 20px;
+}
+.slot-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+.slot-now {
+  margin-left: auto;
+  background: #2F5496;
+  color: #FFFFFF;
+  border-radius: 10px;
+  padding: 2px 10px;
+  font-size: 12px;
+  align-self: center;
+}
+.slot-empty {
+  color: #999;
+  font-size: 13px;
+  padding: 4px 0;
+}
+.slot-hint {
+  font-size: 12px;
+  color: #999;
+}
+
+/* 药品条目：名称 + 剂量；断药品红色（R08） */
+.slot-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #F0F0F0;
+}
+.slot-item:last-child {
+  border-bottom: none;
+}
+.med-name {
+  font-size: 15px;
+  color: #333;
+}
+.med-dose {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2F5496;
+}
+.med-out {
+  color: #FF4D4F;
+}
+
+/* 空箱引导（2026-11-12：首启不再注入预置数据，空态直达添加） */
+.empty-add-btn {
+  margin-top: 20px;
+  width: 200px;
+  height: 44px;
+  line-height: 44px;
+  font-size: 15px;
+}
+.empty-hint {
+  font-size: 11px;
+  color: #BBB;
+  margin-top: 12px;
+}

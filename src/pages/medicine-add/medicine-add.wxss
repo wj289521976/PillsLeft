@@ -1,0 +1,106 @@
+/* 三问式添加页（R11 适老）：问句标题 18px、关键数字 22px、点选热区 ≥44px */
+.q-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2F5496;
+  margin-bottom: 16px;
+}
+
+.name-input {
+  background: #F5F7FA;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 16px;
+}
+
+/* 时段点选大按钮 */
+.slot-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.slot-toggle {
+  min-width: 64px;
+  height: 48px;
+  border-radius: 10px;
+  background: #F5F7FA;
+  color: #555;
+  font-size: 17px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+}
+.slot-on {
+  background: #F0F5FF;
+  color: #2F5496;
+  border-color: #2F5496;
+}
+
+/* 剂量行 */
+.slot-dose-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+}
+.slot-dose-label {
+  font-size: 16px;
+  color: #333;
+}
+
+.dose-sum {
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: #F0F5FF;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #2F5496;
+}
+.num-big {
+  font-size: 22px;
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+/* 无固定时段切换 */
+.no-fixed-toggle {
+  margin-top: 12px;
+  color: #2F5496;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.occasional-input {
+  margin-bottom: 8px;
+}
+
+/* 常用规格快捷点选 */
+.spec-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.spec-chip {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #F5F7FA;
+  color: #555;
+  font-size: 14px;
+  border: 2px solid transparent;
+}
+.spec-on {
+  background: #F0F5FF;
+  color: #2F5496;
+  border-color: #2F5496;
+  font-weight: 600;
+}
+
+.submit-btn {
+  margin-top: 24px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 16px;
+}

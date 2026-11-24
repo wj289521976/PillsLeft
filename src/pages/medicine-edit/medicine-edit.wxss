@@ -1,0 +1,31 @@
+.form-group {
+  margin-bottom: 16px;
+}
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+.form-input {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #E8E8E8;
+}
+.form-picker {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #E8E8E8;
+  color: #333;
+}
+/* 表单辅助说明（CONVENTIONS 约定的 .form-hint；S5 审核 A2 落地时首次使用） */
+.form-hint {
+  font-size: 11px;
+  color: #999;
+  line-height: 1.6;
+  margin-top: 6px;
+}

@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="summary-bar">
+    <text class="summary-date">{{today}}</text>
+    <view class="summary-stats">
+      <text>共 {{totalCount}} 种药</text>
+      <text wx:if="{{warningCount > 0}}" class="status-warning">  🟡 {{warningCount}}需补货</text>
+      <text wx:if="{{outCount > 0}}" class="status-out">  ❌ {{outCount}}断药</text>
+    </view>
+  </view>
+
+  <view wx:if="{{medicines.length === 0}}" class="empty-state">
+    <view class="empty-icon">💊</view>
+    <view class="empty-text">药箱空空，点下方按钮添加第一种药品</view>
+  </view>
+
+  <view wx:else>
+    <view
+      wx:for="{{medicines}}"
+      wx:key="id"
+      class="card medicine-card {{item.bgClass}}"
+    >
+      <view class="card-header">
+        <text class="card-name">{{item.name}}</text>
+        <text class="status-badge" style="color:{{item.statusColor}}">{{item.statusIcon}} {{item.statusText}}</text>
+      </view>
+      <view class="card-body">
+        <text class="card-info">剩 {{item.remainingBoxes}} 盒 · 还能吃 {{item.remainingDays}} 天</text>
+        <text class="card-usage" wx:if="{{item.usageTime}}">{{item.usageTime}}</text>
+      </view>
+      <view class="card-actions">
+        <button class="btn-outline" size="mini" bindtap="onRestock" data-id="{{item.id}}">补货</button>
+        <button class="btn-primary" size="mini" bindtap="onDetail" data-id="{{item.id}}">详情</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="fab" bindtap="onAdd">+</view>
+</view>
